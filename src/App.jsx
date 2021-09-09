@@ -1,32 +1,25 @@
-import { getByPlaceholderText } from "@testing-library/react";
 import React, { Component } from "react";
+import GreetingInput from './GreetingInput'
+import GreetingOutput from './GreetingOutput'
 
-class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     planet: "pluto",
-  //   };
-  // }
-
+export class App extends Component {
   state = {
-    planet: "saturnus",
+    planet: "",
   };
 
+  renderGreeting(event) {
+    this.setState({ planet: event.target.value });
+  }
+
   render() {
-    const { planet } = this.state;
+    //const { planet } = this.state;
 
     return (
-      <div>
-        <h1>Hello planet {planet} from a class component</h1>
-        <input
-          type="text"
-          placeholder="Type a name"
-          onChange={(event) => {
-            this.setState({ planet: event.target.value });
-          }}
-        />
-      </div>
+      <>
+        <GreetingOutput planet= {this.state.planet}/>
+        <GreetingInput renderGreeting={this.renderGreeting.bind(this)} />
+       
+      </>
     );
   }
 }
