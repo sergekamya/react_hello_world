@@ -19,6 +19,13 @@ class App extends Component {
     return (
       <div>
         <h1>Hello planet {planet} from a class component</h1>
+        <input
+          type="text"
+          placeholder="Type a name"
+          onChange={(event) => {
+            this.setState({ planet: event.target.value });
+          }}
+        />
       </div>
     );
   }
